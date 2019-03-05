@@ -1,6 +1,1 @@
 This is an Applescript script to automate creation and sending of messages in the native MacOS Mail app. 
-
-This script should be used with Automator to create a functional .app application. 
-After application creation, you can place a file to be attached automatically in the root of the .app. 
-
-Right click the .app, show contents, and place your file there (NOT in the contents folder). 
