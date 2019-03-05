@@ -1,0 +1,25 @@
+# Prompt for inputs and set variables
+# We use a prompt to set email address here.
+display dialog "example1:" default answer ""
+set example1 to (text returned of result)
+display dialog "example2:" default answer ""
+set example2 to (text returned of result)
+display dialog "email_address:" default answer ""
+set email_address to (text returned of result)
+set the_subject to "Subject"
+# The next line allows a file to be automatically attached. The attachment should be placed in the root of the .app package.
+# set attachment_file to ((((path to me as text) as alias) as string) & "example.file")
+set the_message to "this is where body text goes.
+
+You can do things like " & example1 & " and " & example2 & " to display what was input into the prompts."
+
+tell application "Mail"
+	activate "Mail"
+	set theMessage to make new outgoing message with properties {visible:true, subject:the_subject, content:the_message}
+	
+	tell theMessage
+		make new to recipient at the end of to recipients with properties {address:email_address}
+		make new attachment with properties {file name:attachment_file as alias}
+	end tell
+end tell
+end
